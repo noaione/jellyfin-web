@@ -31,6 +31,8 @@ export const REDIRECTS: Redirect[] = [
     { from: 'scheduledtasks.html', to: '/dashboard/tasks' },
     { from: 'serveractivity.html', to: '/dashboard/activity' },
     { from: 'streamingsettings.html', to: '/dashboard/playback/streaming' },
+    { from: 'trickplay.html', to: '/dashboard/playback/trickplay' },
+    { from: 'trickplayconfiguration.html', to: '/dashboard/playback/trickplay' },
     { from: 'useredit.html', to: '/dashboard/users/profile' },
     { from: 'userlibraryaccess.html', to: '/dashboard/users/access' },
     { from: 'usernew.html', to: '/dashboard/users/add' },

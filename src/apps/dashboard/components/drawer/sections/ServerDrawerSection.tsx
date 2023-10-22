@@ -20,6 +20,7 @@ const LIBRARY_PATHS = [
 
 const PLAYBACK_PATHS = [
     '/dashboard/playback/transcoding',
+    '/dashboard/playback/trickplay',
     '/dashboard/playback/resume',
     '/dashboard/playback/streaming'
 ];
@@ -101,6 +102,9 @@ const ServerDrawerSection = () => {
                 <List component='div' disablePadding>
                     <ListItemLink to='/dashboard/playback/transcoding' sx={{ pl: 4 }}>
                         <ListItemText inset primary={globalize.translate('Transcoding')} />
+                    </ListItemLink>
+                    <ListItemLink to='/dashboard/playback/trickplay' sx={{ pl: 4 }}>
+                        <ListItemText inset primary={globalize.translate('Trickplay')} />
                     </ListItemLink>
                     <ListItemLink to='/dashboard/playback/resume' sx={{ pl: 4 }}>
                         <ListItemText inset primary={globalize.translate('ButtonResume')} />

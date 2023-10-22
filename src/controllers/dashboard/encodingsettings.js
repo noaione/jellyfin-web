@@ -19,6 +19,7 @@ function loadPage(page, config, systemInfo) {
     page.querySelector('#chkHardwareEncoding').checked = config.EnableHardwareEncoding;
     page.querySelector('#chkAllowHevcEncoding').checked = config.AllowHevcEncoding;
     page.querySelector('#chkAllowAv1Encoding').checked = config.AllowAv1Encoding;
+    page.querySelector('#chkAllowMjpegEncoding').checked = config.AllowMjpegEncoding;
     $('#selectVideoDecoder', page).val(config.HardwareAccelerationType);
     $('#selectThreadCount', page).val(config.EncodingThreadCount);
     page.querySelector('#chkEnableAudioVbr').checked = config.EnableAudioVbr;
@@ -125,6 +126,7 @@ function onSubmit() {
             config.EnableHardwareEncoding = form.querySelector('#chkHardwareEncoding').checked;
             config.AllowHevcEncoding = form.querySelector('#chkAllowHevcEncoding').checked;
             config.AllowAv1Encoding = form.querySelector('#chkAllowAv1Encoding').checked;
+            config.AllowMjpegEncoding = form.querySelector('#chkAllowMjpegEncoding').checked;
             ApiClient.updateNamedConfiguration('encoding', config).then(function () {
                 updateEncoder(form);
             }, function () {
@@ -169,6 +171,9 @@ function getTabs() {
     return [{
         href: '#/dashboard/playback/transcoding',
         name: globalize.translate('Transcoding')
+    }, {
+        href: '#/dashboard/playback/trickplay',
+        name: globalize.translate('Trickplay')
     }, {
         href: '#/dashboard/playback/resume',
         name: globalize.translate('ButtonResume')

@@ -25,6 +25,9 @@ function getTabs() {
         href: '#/dashboard/playback/transcoding',
         name: globalize.translate('Transcoding')
     }, {
+        href: '#/dashboard/playback/trickplay',
+        name: globalize.translate('Trickplay')
+    }, {
         href: '#/dashboard/playback/resume',
         name: globalize.translate('ButtonResume')
     }, {
@@ -37,7 +40,7 @@ $(document).on('pageinit', '#streamingSettingsPage', function () {
     $('.streamingSettingsForm').off('submit', onSubmit).on('submit', onSubmit);
 }).on('pageshow', '#streamingSettingsPage', function () {
     loading.show();
-    libraryMenu.setTabs('playback', 2, getTabs);
+    libraryMenu.setTabs('playback', 3, getTabs);
     const page = this;
     ApiClient.getServerConfiguration().then(function (config) {
         loadPage(page, config);

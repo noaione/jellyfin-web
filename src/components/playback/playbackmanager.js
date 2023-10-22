@@ -125,7 +125,7 @@ function getItemsForPlayback(serverId, query) {
         } else {
             query.Limit = query.Limit || 300;
         }
-        query.Fields = 'Chapters';
+        query.Fields = ['Chapters', 'Trickplay'];
         query.ExcludeLocationTypes = 'Virtual';
         query.EnableTotalRecordCount = false;
         query.CollapseBoxSetItems = false;
@@ -1856,7 +1856,7 @@ class PlaybackManager {
                     IsVirtualUnaired: false,
                     IsMissing: false,
                     UserId: apiClient.getCurrentUserId(),
-                    Fields: 'Chapters'
+                    Fields: ['Chapters', 'Trickplay']
                 }).then(function (episodesResult) {
                     const originalResults = episodesResult.Items;
                     const isSeries = firstItem.Type === 'Series';

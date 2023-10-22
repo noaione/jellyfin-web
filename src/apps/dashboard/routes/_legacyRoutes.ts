@@ -163,5 +163,11 @@ export const LEGACY_ADMIN_ROUTES: LegacyRoute[] = [
             view: 'dashboard/streaming.html',
             controller: 'dashboard/streaming'
         }
+    }, {
+        path: 'playback/trickplay',
+        pageProps: {
+            controller: 'dashboard/trickplay',
+            view: 'dashboard/trickplay.html'
+        }
     }
 ];

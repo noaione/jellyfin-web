@@ -159,6 +159,10 @@ function updateBubble(range, percent, value, bubble) {
 
         bubble.style.left = bubblePos + 'px';
 
+        if (range.upupdateBubbleHtml && range.updateBubbleHtml(bubble, value)) {
+            return;
+        }
+
         let html;
 
         if (range.getBubbleHtml) {
