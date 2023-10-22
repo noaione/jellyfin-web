@@ -161,6 +161,7 @@
     "Copied": "Copied",
     "Copy": "Copy",
     "CopyFailed": "Could not copy",
+    "CopyAsPlaylistURL": "Copy as Playlist URL",
     "CopyStreamURL": "Copy Stream URL",
     "CopyStreamURLSuccess": "URL copied successfully.",
     "CriticRating": "Critics rating",

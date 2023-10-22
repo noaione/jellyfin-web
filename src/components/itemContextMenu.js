@@ -175,6 +175,16 @@ export function getCommands(options) {
         }
     }
 
+    const validCopyAsPlaylistURLTypes = [
+        'BoxSet',
+        'CollectionFolder',
+        'MusicAlbum',
+        'MusicArtist',
+        'Playlist',
+        'Series',
+        'Season'
+    ];
+
     // Books are promoted to major download Button and therefor excluded in the context menu
     if ((item.CanDownload && appHost.supports('filedownload')) && item.Type !== 'Book') {
         commands.push({
@@ -188,6 +198,14 @@ export function getCommands(options) {
             id: 'copy-stream',
             icon: 'content_copy'
         });
+
+        if (validCopyAsPlaylistURLTypes.includes(item.Type)) {
+            commands.push({
+                name: globalize.translate('CopyAsPlaylistURL'),
+                id: 'copy-as-playlist',
+                icon: 'content_copy'
+            });
+        }
     }
 
     if (commands.length) {
@@ -416,6 +434,19 @@ function executeCommand(item, id, options) {
                     prompt(globalize.translate('CopyStreamURL'), downloadHref);
                 });
                 getResolveFunction(resolve, id)();
+                break;
+            }
+            case 'copy-as-playlist': {
+                const downloadHref = apiClient.getItemDownloadUrl(itemId);
+                const playlistUrl = downloadHref.replace(
+                    `/Items/${itemId}/Download?api_key=`,
+                    `/PlaylistGen/Items/${itemId}?token=`
+                );
+                copy(playlistUrl).then(() => {
+                    toast(globalize.translate('CopyStreamURLSuccess'));
+                }).catch(() => {
+                    prompt(globalize.translate('CopyAsPlaylistURL'), playlistUrl);
+                });
                 break;
             }
             case 'editsubtitles':
